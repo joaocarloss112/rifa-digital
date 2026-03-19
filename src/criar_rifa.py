@@ -7,7 +7,7 @@ def Criar_rifa():
     preco = int(input("Informe o preço da rifa: "))
     data = input("Digite a data do sorteio (DD/MM/AAAA): ")
     try:
-        data_objeto = datetime.strptime(data_usuario, "%d/%m/%Y")
+        data_objeto = datetime.strptime(data, "%d/%m/%Y")
         print(f"Data validada com sucesso: {data_objeto}")
         rifa = {
             "nome": nome_rifa,
@@ -18,7 +18,6 @@ def Criar_rifa():
             "numeros_disponiveis": list(range(1, qtd + 1)),
             "compradores": {} 
         }
-    return rifa
     except ValueError:
         print("Formato inválido! Use o padrão DD/MM/AAAA.")
 
