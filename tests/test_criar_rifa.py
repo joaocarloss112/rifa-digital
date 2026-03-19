@@ -1,7 +1,7 @@
 import pytest
 from src.criar_rifa import verificar_criacao
 
-def test_verificar_criacao_retorna_dicionario_correto():
+def test_verificar_criacao():
     nome = "Rifa de PC"
     descricao = "Um PC Gamer"
     qtd = "20"

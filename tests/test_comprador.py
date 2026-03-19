@@ -1,5 +1,5 @@
 import pytest
-from src.comprador import criar_numero
+from src.comprador import comprar_numero
 from src.criar_rifa import verificar_criacao
 
 def test_compra():
@@ -11,9 +11,10 @@ def test_compra():
     resultado = verificar_criacao(nome, descricao, qtd, preco, data)
     numero_desejado = 7
     comprador_nome = "João Carlos"
-    sucesso = comprar_bilhete(resultado, numero_desejado, comprador_nome)
+    numeros_disponiveis = "20"
+    sucesso = comprar_numero(resultado, numero_desejado, comprador_nome)
 
     assert sucesso is True
-    assert numero_desejado not in rifa_pc["numeros_disponiveis"]
-    assert rifa_pc["compradores"][numero_desejado] == "Carlos"
-    assert len(rifa_pc["numeros_disponiveis"]) == 19
+    assert numero_desejado not in resultado["numeros_disponiveis"]
+    assert resultado["compradores"][numero_desejado] == "João Carlos"
+    assert len(resultado["numeros_disponiveis"]) == 19

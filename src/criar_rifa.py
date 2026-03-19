@@ -22,11 +22,15 @@ def Criar_rifa():
         print("Formato inválido! Use o padrão DD/MM/AAAA.")
 
 def verificar_criacao(nome, descricao, qtd, preco, data):
+    num = int(qtd)
     return {
-            "nome": nome,
-            "descricao": descricao,
-            "quantidade": int(qtd),
-            "preco": int(preco),
-            "data": data
-        }
+
+        "nome": nome,
+        "descricao": descricao,
+        "quantidade": int(qtd),
+        "preco": int(preco),
+        "data": data,
+        "numeros_disponiveis": list(range(1, num + 1)),
+        "compradores": {}
+    }
 
