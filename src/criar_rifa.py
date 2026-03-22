@@ -22,15 +22,26 @@ def Criar_rifa():
         print("Formato inválido! Use o padrão DD/MM/AAAA.")
 
 def verificar_criacao(nome, descricao, qtd, preco, data):
-    num = int(qtd)
-    return {
+    if not nome or not descricao or not qtd or not preco or not data:
+        raise ValueError("Campos obrigatórios não preenchidos")
 
+    num = int(qtd)
+
+    numeros = {
+        i: {
+            "status": "disponivel",
+            "comprador": None
+        }
+        for i in range(1, num + 1)
+    }
+
+    return {
+        
         "nome": nome,
         "descricao": descricao,
-        "quantidade": int(qtd),
+        "quantidade": num,
         "preco": int(preco),
         "data": data,
-        "numeros_disponiveis": list(range(1, num + 1)),
-        "compradores": {}
+        "numeros": numeros
     }
 
