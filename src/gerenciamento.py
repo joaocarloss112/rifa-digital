@@ -8,8 +8,17 @@ def confirmar_pagamento(rifa, numero):
         return False
 
     rifa["numeros"][numero]["status"] = "vendido"
-    return True
 
+
+    if numero in rifa["numeros_disponiveis"]:
+        rifa["numeros_disponiveis"].remove(numero)
+
+    comprador = rifa["numeros"][numero]["comprador"]
+    if comprador:
+        rifa["compradores"][numero] = comprador["nome"]
+
+    return True
+    
 
 def realizar_sorteio(rifa):
     numeros_vendidos = [
@@ -18,8 +27,9 @@ def realizar_sorteio(rifa):
     ]
 
     if len(numeros_vendidos) != rifa["quantidade"]:
-        raise Exception("Nem todos os números foram vendidos")
+        raise ValueError("Nem todos os números foram vendidos")
 
+    import random
     vencedor = random.choice(numeros_vendidos)
 
     return vencedor, rifa["numeros"][vencedor]["comprador"]
