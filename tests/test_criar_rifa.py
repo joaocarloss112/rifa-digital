@@ -14,3 +14,9 @@ def test_verificar_criacao():
     assert resultado["preco"] == 50
     assert resultado["descricao"] == "Um PC Gamer"
     assert resultado["data"] == "24/01/2002"
+
+def test_geracao_numeros():
+    rifa = verificar_criacao("Teste", "Desc", "5", "10", "01/01/2025")
+
+    assert len(rifa["numeros"]) == 5
+    assert rifa["numeros"][1]["status"] == "disponivel"
